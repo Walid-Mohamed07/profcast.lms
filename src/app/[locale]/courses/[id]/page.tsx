@@ -9,7 +9,6 @@ import {
   HydrationBoundary,
   QueryClient,
 } from '@tanstack/react-query';
-import { FC } from 'react';
 
 interface CoursePageProps {
   params: {
@@ -74,7 +73,7 @@ interface CoursePageProps {
 //   }
 // }
 
-const CoursePage: FC<CoursePageProps> = async ({ params }) => {
+const CoursePage = async ({ params }: CoursePageProps) => {
   const { id } = await params;
 
   const queryClient = new QueryClient();
