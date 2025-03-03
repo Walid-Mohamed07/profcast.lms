@@ -10,11 +10,11 @@ import {
   QueryClient,
 } from '@tanstack/react-query';
 
-interface CoursePageProps {
-  params: {
+type CoursePageProps = {
+  params: Promise<{
     id: string;
-  };
-}
+  }>;
+};
 
 // export async function generateMetadata({
 //   params,
