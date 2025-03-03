@@ -1,0 +1,118 @@
+.hero {
+  /* background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed; */
+  /* height: calc(-100px + 80vh); */
+  position: relative;
+  height: 475px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #0a1535, #08648f);
+  color: white;
+  text-align: center;
+}
+
+.hero .heroImgWrapper {
+  position: absolute;
+  width: 100%;
+  height: inherit;
+}
+
+.heroImgWrapper img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+  gap: 1.6rem;
+}
+
+.hero-content h1 {
+  font-size: 45px;
+  font-weight: 700;
+}
+
+.hero-content-description {
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  margin-bottom: revert-layer;
+}
+
+.hero-content-description p {
+  font-size: 15px;
+}
+
+.hero-course-instructor-section {
+  display: flex;
+  flex-direction: column;
+  text-align-last: start;
+  border: 1px solid #7e7e7e;
+  border-radius: 4px;
+  padding: 6px 15px;
+  background: rgb(255, 255, 255, 15%);
+}
+
+.instructor {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.instructor-name {
+  color: #c0c4fc;
+}
+
+.oval-container {
+  width: 45px;
+  height: 45px;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroImgWrapper::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  justify-self: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.35
+  ); /* Optional: To darken the background image */
+  z-index: 1;
+}
+
+.moreInfo {
+  display: flex;
+  flex-direction: row;
+  text-align-last: start;
+  border: 1px solid #7e7e7e;
+  border-radius: 4px;
+  padding: 6px 15px;
+  background: rgb(255, 255, 255, 15%);
+}
+
+.moreInfo ul {
+  display: flex;
+  flex-direction: column;
+  padding: 3px 0;
+  gap: 8px;
+}

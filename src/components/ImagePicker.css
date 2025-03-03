@@ -1,0 +1,17 @@
+#cvUpload {
+  display: none;
+}
+
+#cvUploadBTN {
+  cursor: pointer;
+  font-weight: normal;
+  background: #1b6dc1;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+#cvUploadBTN:hover {
+  background: #1c95c9;
+}

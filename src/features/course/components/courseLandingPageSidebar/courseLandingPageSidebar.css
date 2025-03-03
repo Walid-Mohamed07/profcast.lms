@@ -1,0 +1,76 @@
+.course-landing-page_sidebar-container {
+  /* display: none; */
+  /* margin: 0;
+  padding: 0; */
+}
+
+.sidebar-container--content--V-bFw {
+  width: 24rem;
+  z-index: 1;
+  border-bottom: 1px solid #d1d2e0;
+  box-sizing: border-box;
+  box-shadow:
+    0 2px 4px rgba(6, 17, 118, 0.08),
+    0 4px 12px rgba(6, 17, 118, 0.08);
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.course-image {
+  width: 100%;
+}
+
+.sidebar-container--buy-for-team--Si42W,
+.sidebar-container--purchase-section--XWCM- {
+  padding: 2.4rem;
+}
+
+.priceSection {
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.buyButtonsWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.addToCartBtn {
+  padding: 0 1.2rem;
+  background: #2663ff;
+  color: #fff;
+  align-items: center;
+  padding: 13px 0;
+  border-radius: 4px;
+}
+
+.buyNowBtn {
+  padding: 0 1.2rem;
+  color: #2663ff;
+  align-items: center;
+  padding: 13px 0;
+  border: 1px solid #2663ff;
+  border-radius: 4px;
+}
+
+@media (min-width: 55em) {
+  .course-landing-page_sidebar-container {
+    display: block;
+    position: absolute;
+    top: -26rem;
+    /* margin-left: 39.6rem; */
+    z-index: 1;
+  }
+
+  .justifyEnd {
+    justify-content: end;
+  }
+}
+
+@media (min-width: 73.75em) {
+  .course-landing-page_sidebar-container {
+    /* margin-left: 46.6rem; */
+  }
+}

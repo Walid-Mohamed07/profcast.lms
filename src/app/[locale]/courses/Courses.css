@@ -1,0 +1,75 @@
+.commentHeader {
+  margin: 30px 0 10px 0 !important;
+  font-size: 20px !important;
+  text-transform: uppercase;
+  position: relative;
+}
+
+/* ------------------------------------------------- */
+.addContentWrapper {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px !important;
+}
+
+.addContentWrapper .contentSec1,
+.addContentWrapper .contentSec2 {
+  width: 50%;
+}
+
+.contentSec1 {
+  padding-right: 25px;
+  border-right: 1px solid #ccc;
+}
+
+.contentSec2 {
+  display: flex;
+  flex-direction: column;
+  padding-left: 25px;
+  text-align: right;
+}
+
+.addContentWrapper h1 {
+  font-size: 22px;
+  padding: 15px 0 20px 0;
+}
+
+.addContentWrapper li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  gap: 5px;
+}
+
+.addContentWrapper li p {
+  margin: 0;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.buttonSeparator {
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+  text-align: center;
+}
+
+@media screen and (max-width: 780px) {
+  .addContentWrapper {
+    flex-direction: column;
+  }
+
+  .addContentWrapper .contentSec1,
+  .addContentWrapper .contentSec2 {
+    width: 100%;
+  }
+
+  .contentSec1 {
+    padding-right: 0;
+    border: 0;
+  }
+
+  .contentSec2 {
+    padding-left: 0 !important;
+  }
+}
+/* ------------------------------------------------- */

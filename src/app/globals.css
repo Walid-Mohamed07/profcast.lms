@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: #0a1535;
+    --primary-light: #1a2b5c;
+    --secondary: #2563eb;
+    --secondary-light: #60a5fa;
+    --accent: #f59e0b;
+    --accent-light: #fbbf24;
+
+    --dbbg: #0a1535;
+    --dbbgSoft: #16285f;
+    --text: #fff;
+    --textSoft: #cacaca;
+  }
+
+  body {
+    font-family: "Cairo", serif;
+  }
+
+  ::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--secondary);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-light);
+  }
+}
+
+@layer components {
+  .body1Section {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 35px;
+    margin-top: 35px !important;
+  }
+  .custom-container {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .contentSectionWrapper {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  .sectionHeader {
+    text-transform: uppercase;
+    position: relative;
+    margin: 30px 0 10px !important;
+    font-size: 20px !important;
+  }
+
+  .border-bottom-right-radius {
+    border-bottom-right-radius: 8px;
+  }
+
+  .border-bottom-left-radius {
+    border-bottom-left-radius: 8px;
+  }
+
+  .border-top-right-radius {
+    border-top-right-radius: 8px;
+  }
+
+  .border-top-left-radius {
+    border-top-left-radius: 8px;
+  }
+
+  .row-1 {
+    width: 100%;
+    place-self: flex-start;
+  }
+
+  .container-fluid {
+    width: calc(100% - 60px);
+    max-width: 1400px;
+    margin: 0px auto;
+    padding: 0px 16px;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 1365px) {
+    .container-fluid {
+      width: 100%;
+      padding: 0px 16px;
+    }
+  }
+
+  @media screen and (min-width: 1600px) {
+    .container-fluid {
+      max-width: 1360px;
+    }
+  }
+
+  @media screen and (min-width: 1300px) {
+    .container-fluid {
+      width: 90%;
+      max-width: 1240px;
+      margin: 0px auto;
+    }
+  }
+
+  @media screen and (min-width: 1023px) {
+    .container-fluid {
+      width: 95%;
+      margin: 0px auto;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .row-1 {
+      width: 75% !important;
+    }
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    display: flex;
+    justify-content: center;
+  }
+
+  .flex-between {
+    display: flex;
+    justify-content: space-between;
+  }
+}

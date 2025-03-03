@@ -1,0 +1,59 @@
+.contentSectionWrapper {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.contentSectionWrapper details {
+  font-size: 1rem;
+  /* margin: 0; */
+  width: 100%;
+  border-radius: 8px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.contentSectionWrapper details:hover {
+  /* background: linear-gradient(to right, #08648f, #3c9ac6); */
+  background-color: #77777726;
+}
+
+details summary img {
+  transition: all 0.3s ease-in-out;
+}
+
+.contentSectionWrapper details[open] {
+  background-color: #77777726;
+  /* background: linear-gradient(to right, #08648f, #3c9ac6); */
+}
+
+.contentSectionWrapper details[open] summary img {
+  transform: rotate(90deg);
+}
+
+details summary:focus {
+  outline: none;
+}
+
+.accordionTitle {
+  transition: all 250ms ease-in-out;
+}
+
+.accordionTitle svg {
+  color: #ba4ef0;
+}
+
+.accordionContent {
+  padding: 20px;
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows 0.6s ease-in-out;
+}
+
+.contentSectionWrapper details[open] .accordionContent {
+  grid-template-rows: 1fr; /* Expand to full height */
+}
+
+.accordionInner {
+  min-height: 0;
+}

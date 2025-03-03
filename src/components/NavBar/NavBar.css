@@ -1,0 +1,285 @@
+#header {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  position: sticky;
+  top: 0px;
+  z-index: 9999;
+  border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.headerContainer {
+  height: 70px;
+  margin: auto;
+  border-bottom: rgb(230, 230, 230);
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  /* padding: 1rem 2rem; */
+}
+
+.logo-wrapper {
+  width: 100px;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list li {
+  font-size: 1rem;
+}
+
+.nav-list li a {
+  text-decoration: none;
+  color: #908e9b;
+  transition: all 0.2s ease;
+}
+
+.nav-list li a:hover {
+  color: rgb(0, 0, 0);
+}
+
+.active {
+  color: #000 !important;
+}
+
+.langActive {
+  cursor: default !important;
+  color: #fff;
+  background-color: rgb(209 213 219 / 0.8) !important;
+}
+
+#navBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#navBar .icon {
+  cursor: pointer;
+  width: 19px;
+  height: 19px;
+  color: #383838;
+}
+
+#navBar .lang-btn {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.lang-btn:hover {
+  color: #1b6dc1;
+}
+
+/* Media Query for screens with a min-width of 1600px */
+@media screen and (min-width: 1600px) {
+  .headerContainer {
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+}
+
+/* ---------------------------USER------------------------- */
+
+.userContainer {
+  display: flex;
+  align-items: center;
+}
+
+.user-icon-container,
+.langContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown {
+  position: absolute;
+  width: fit-content;
+  top: 155%;
+  /* left: -700%;
+    right: 0; */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
+  z-index: 1;
+}
+
+.right0 {
+  right: 0;
+}
+
+.left0 {
+  left: 0;
+}
+
+.dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown ul {
+  width: 155px;
+  list-style: none;
+  margin: 0;
+}
+
+.dropdown ul li {
+  cursor: pointer;
+  padding: 8px 12px;
+  font-size: 14px;
+  transition: all 0.35s ease-in-out;
+}
+
+.dropdown ul li:hover {
+  color: #fff;
+  background-color: #1c95c9;
+}
+
+.languageDropdown {
+  position: absolute;
+  width: fit-content;
+  top: 155%;
+  left: -200%;
+  /* right: 0; */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
+  z-index: 1;
+}
+
+.languageDropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.languageDropdown ul {
+  width: 90px;
+  text-align: center;
+  list-style: none;
+  margin: 0;
+}
+
+.languageDropdown ul li {
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 12px;
+  transition: all 0.35s ease-in-out;
+}
+
+.languageDropdown ul li:hover {
+  color: #fff;
+  background-color: #1c95c9;
+}
+
+.mobile-menu-icon {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Side Menu Styles */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -400px; /* Hide the menu off the screen */
+  width: 400px;
+  max-width: 80%;
+  height: 100%;
+  background-color: #fff;
+  color: #000;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.side-menu.open {
+  left: 0; /* Slide the menu into view */
+}
+
+.side-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.side-menu-logo {
+  width: 100px; /* Adjust based on your design */
+}
+
+.close-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.side-nav-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.side-nav-list li {
+  margin: 10px 0;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.side-nav-list li a {
+  display: inline-block;
+  width: 100%;
+  color: #908e9b;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .logo-wrapper {
+    width: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-list {
+    display: none;
+  }
+
+  .mobile-menu-icon {
+    display: block;
+  }
+
+  .side-menu {
+    left: -400px;
+  }
+
+  .side-menu.open {
+    left: 0;
+  }
+}

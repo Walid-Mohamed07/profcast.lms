@@ -1,0 +1,58 @@
+.hero {
+  /* background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed; */
+  /* height: calc(-100px + 80vh); */
+  position: relative;
+  height: 475px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #314755, #26a0da);
+  color: white;
+  text-align: center;
+}
+
+.hero .heroImgWrapper {
+  position: absolute;
+  width: 100%;
+  height: inherit;
+}
+
+.heroImgWrapper img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: revert-layer;
+}
+
+.heroImgWrapper::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  justify-self: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.35
+  ); /* Optional: To darken the background image */
+  z-index: 1;
+}
