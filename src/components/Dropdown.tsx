@@ -1,8 +1,8 @@
 'use client';
 
+import { useClickOutside } from '@/hooks/useClickOutside';
 import { AnimatePresence, motion } from 'framer-motion';
 import { RefObject, useEffect, useRef, useState } from 'react';
-import { useClickOutside } from '../../hooks/useClickOutside';
 
 interface Props<T> {
   value?: T;
