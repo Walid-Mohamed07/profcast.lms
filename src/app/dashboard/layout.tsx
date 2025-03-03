@@ -5,7 +5,7 @@ import styles from '@/features/dashboard/Dashboard.module.css';
 import '../globals.css';
 import './Dashboard.css';
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html>
       <body>
