@@ -4,7 +4,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './MenuLink.module.css';
 
-const MenuLink = ({ item }) => {
+interface MenuItem {
+  path: string;
+  icon: React.ReactNode;
+  title: string;
+}
+
+const MenuLink = ({ item }: { item: MenuItem }) => {
   const pathname = usePathname();
   const isActive = pathname === item.path;
   return (
