@@ -8,11 +8,11 @@ import PurchaseComponent from '@/features/course/components/Purchase/PurchaseCom
 // } from '@tanstack/react-query';
 import { FC } from 'react';
 
-interface CoursePageProps {
-  params: {
+type CoursePageProps = {
+  params: Promise<{
     id: string;
-  };
-}
+  }>;
+};
 
 const PurchasePage: FC<CoursePageProps> = async ({ params }) => {
   const { id } = await params;
