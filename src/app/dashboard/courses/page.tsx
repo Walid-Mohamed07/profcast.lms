@@ -8,11 +8,11 @@ import { fetchCourses } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Courses = async ({
-  searchParams,
-}: {
+interface PageProps {
   searchParams: { q?: string; page?: number };
-}) => {
+}
+
+const Courses = async ({ searchParams }: PageProps) => {
   const q = searchParams?.q || '';
   const page = searchParams?.page || 1;
 
@@ -44,7 +44,7 @@ const Courses = async ({
         </thead>
         <tbody>
           {courses.map((course) => (
-            <tr key={course._id}>
+            <tr key={course._id as string}>
               <td>
                 <div className={styles.course}>
                   <Image
@@ -90,7 +90,7 @@ const Courses = async ({
                     </button>
                   </Link>
                   <form action={deleteCourse}>
-                    <input type="hidden" name="id" value={course._id} />
+                    <input type="hidden" name="id" value={course._id as string} />
                     <button className={`${styles.button} ${styles.delete}`}>
                       Delete
                     </button>

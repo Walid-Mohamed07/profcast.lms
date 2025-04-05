@@ -7,11 +7,11 @@ import { fetchUsers } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Users = async ({
-  searchParams,
-}: {
+interface PageProps {
   searchParams: { q?: string; page?: number };
-}) => {
+}
+
+const Users = async ({ searchParams }: PageProps) => {
   const q = searchParams?.q || '';
   const page = searchParams?.page || 1;
   const { count, users } = await fetchUsers(q, page);
@@ -37,7 +37,7 @@ const Users = async ({
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user._id}>
+            <tr key={String(user._id)}>
               <td>
                 <div className={styles.user}>
                   <Image
@@ -66,7 +66,7 @@ const Users = async ({
                     </button>
                   </Link>
                   <form action={deleteUser}>
-                    <input type="hidden" name="id" value={user._id} />
+                    <input type="hidden" name="id" value={String(user._id)} />
                     <button className={`${styles.button} ${styles.delete}`}>
                       Delete
                     </button>
