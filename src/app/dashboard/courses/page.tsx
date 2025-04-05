@@ -1,54 +1,108 @@
-'use client';
+import { ImagePath } from '@/constants/imagePath';
+import { STORAGE_PATH } from '@/constants/storagePath';
+import styles from '@/features/dashboard/components/Courses/Courses.module.css';
+import Pagination from '@/features/dashboard/components/Pagination/Pagination';
+import Search from '@/features/dashboard/components/Search/Search';
+import { deleteCourse } from '@/lib/actions';
+import { fetchCourses } from '@/lib/data';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { QueryKey } from '@/constants/queryKey';
-import { getCourses } from '@/features/course/services/courses';
-import DataTable from '@/features/dashboard/components/DataTable';
-import { courseColumns } from '@/features/dashboard/constants/columns';
-import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
+const Courses = async ({
+  searchParams,
+}: {
+  searchParams: { q?: string; page?: number };
+}) => {
+  const q = searchParams?.q || '';
+  const page = searchParams?.page || 1;
 
-const Courses = () => {
-  const [page, setPage] = useState<number>(1);
-
-  const { data: courses, isLoading: isCourseLoading } = useQuery({
-    queryKey: [QueryKey.COURSES],
-    queryFn: () => getCourses(),
-  });
+  // Fetch courses data
+  const { count, courses } = await fetchCourses(q, page);
 
   return (
-    <DataTable
-      data={courses?.data || []}
-      columns={courseColumns}
-      pageCount={courses?.last_page || 1}
-      currentPage={page}
-      onPageChange={(page) => setPage(page)}
-      isLoading={isCourseLoading}
-      actions={[
-        {
-          action: (
-            <div className="text-primary border border-primary py-2 px-3 rounded-3xl text-xs transition-all hover:bg-orange-600 hover:text-zinc-50">
-              Edit
-            </div>
-          ),
-          handler: (course) => console.log(course),
-        },
-        {
-          action: (
-            <div className="text-primary border border-primary py-2 px-3 rounded-3xl text-xs transition-all hover:bg-red-600 hover:text-zinc-50">
-              Delete
-            </div>
-          ),
-          handler: (course) => console.log(course),
-        },
-      ]}
-    >
-      <div className="flex-between items-center">
-        <h1 className="font-semibold text-3xl">Courses</h1>
-        <div className="border border-white p-4 rounded-lg cursor-pointer">
-          Add New Course
-        </div>
+    <div className={styles.container}>
+      <div className={styles.top}>
+        <Search placeholder="Search for a course..." />
+        <Link href="/dashboard/courses/add">
+          <button className={styles.addButton}>Add Course</button>
+        </Link>
       </div>
-    </DataTable>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <td>Course Name</td>
+            <td>Category</td>
+            <td>Instructor</td>
+            <td>Rating</td>
+            <td>Duration</td>
+            <td>Price ($)</td>
+            <td>Created At</td>
+            <td>Last Update</td>
+            <td>Status</td>
+            <td>Actions</td>
+          </tr>
+        </thead>
+        <tbody>
+          {courses.map((course) => (
+            <tr key={course._id}>
+              <td>
+                <div className={styles.course}>
+                  <Image
+                    src={course?.image || ImagePath.COURSE_PLACEHOLDER}
+                    alt="course"
+                    width={40}
+                    height={40}
+                    className={styles.courseImage}
+                  />
+                  {course.title}
+                </div>
+              </td>
+              <td>{course.category}</td>
+              <td>
+                {
+                  <div className={styles.user}>
+                    <Image
+                      src={
+                        course.instructor?.profilePicture?.length > 0
+                          ? course.instructor.profilePicture
+                          : STORAGE_PATH + '/images/users/unknown.webp'
+                      }
+                      alt="user"
+                      width={40}
+                      height={40}
+                      className={styles.userImage}
+                    />
+                    {course.instructor?.username || 'N/A'}
+                  </div>
+                }
+              </td>
+              <td>{course.rating}</td>
+              <td>{course.duration}</td>
+              <td>{course.price}</td>
+              <td>{course.createdAt?.toString().slice(4, 16) || null}</td>
+              <td>{course.updatedAt?.toString().slice(4, 16)}</td>
+              <td>{course.status}</td>
+              <td>
+                <div className={styles.buttons}>
+                  <Link href={`/dashboard/courses/${course._id}`}>
+                    <button className={`${styles.button} ${styles.view}`}>
+                      View
+                    </button>
+                  </Link>
+                  <form action={deleteCourse}>
+                    <input type="hidden" name="id" value={course._id} />
+                    <button className={`${styles.button} ${styles.delete}`}>
+                      Delete
+                    </button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <Pagination count={count} />
+    </div>
   );
 };
 

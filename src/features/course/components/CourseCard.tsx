@@ -13,7 +13,7 @@ const CourseCard: FC<CourseCardProps> = ({ course }) => {
   const imageUrl = media[0]?.original_url || ImagePath.COURSE_PLACEHOLDER;
 
   return (
-    <article className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 w-full lg:w-52 h-full p-1 flex flex-col border-b-4 border-secondary hover:border-accent">
+    <article className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 w-full md:w-52 h-full p-1 flex flex-col border-b-4 border-secondary hover:border-accent">
       <div className="relative h-28 w-full">
         <Image
           src={imageUrl}

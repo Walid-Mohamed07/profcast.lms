@@ -78,7 +78,7 @@ const DataTable = <T extends object>({
   const columnWidth = `${100 / columns.length}%`;
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 mt-5">
       {children}
       <div className="bg-[#f5f6fa] rounded-lg p-4 text-black">
         {isLoading ? (

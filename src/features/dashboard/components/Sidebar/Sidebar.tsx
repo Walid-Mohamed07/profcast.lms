@@ -1,8 +1,10 @@
+import { auth, signOut } from '@/app/auth';
 import { STORAGE_PATH } from '@/constants/storagePath';
 import Image from 'next/image';
 import {
   MdDashboard,
   MdHelpCenter,
+  MdLogout,
   MdOutlineSettings,
   MdShoppingBag,
   MdSupervisedUserCircle,
@@ -29,6 +31,11 @@ const menuItems = [
         path: '/dashboard/courses',
         icon: <MdShoppingBag />,
       },
+      {
+        title: 'Courses2',
+        path: '/dashboard/courses2',
+        icon: <MdShoppingBag />,
+      },
     ],
   },
   {
@@ -48,19 +55,25 @@ const menuItems = [
   },
 ];
 
-const Sidebar = () => {
+const Sidebar = async () => {
+  const { user } = await auth();
+
   return (
     <div className={styles.container}>
       <div className={styles.user}>
         <Image
           className={styles.userImage}
-          src={STORAGE_PATH + '/images/users/unknown.webp'}
+          src={
+            user.profilePicture.length > 0
+              ? user.profilePicture
+              : STORAGE_PATH + '/images/users/unknown.webp'
+          }
           alt=""
           width={50}
           height={50}
         />
         <div className={styles.userDetails}>
-          <span className={styles.username}>Walid Mohamed</span>
+          <span className={styles.username}>{user.username}</span>
           <span className={styles.userTitle}>Administrator</span>
         </div>
       </div>
@@ -74,6 +87,17 @@ const Sidebar = () => {
           </li>
         ))}
       </ul>
+      <form
+        action={async () => {
+          'use server';
+          await signOut();
+        }}
+      >
+        <button className={styles.logout}>
+          <MdLogout />
+          Logout
+        </button>
+      </form>
     </div>
   );
 };

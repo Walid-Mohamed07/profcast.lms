@@ -1,10 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  @font-face {
+    font-family: Cairo;
+    src: url('/assets/fonts/Cairo/Cairo-VariableFont_slnt\,wght.ttf');
+  }
+
   :root {
     --primary: #0a1535;
     --primary-light: #1a2b5c;
@@ -20,7 +23,7 @@
   }
 
   body {
-    font-family: 'Cairo', serif;
+    font-family: Cairo !important;
   }
 
   ::-webkit-scrollbar {

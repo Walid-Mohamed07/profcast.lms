@@ -2,8 +2,7 @@
 
 import Button from '@/components/Button/Button';
 import ImagePicker from '@/components/ImagePicker';
-import Loader from '@/components/Loader';
-import { MotionDiv } from '@/components/MotionDiv';
+import SkeltonLoader from '@/components/SkeltonLoader';
 import ErrorToast from '@/components/Toast/ErrorToast';
 import { IconPath } from '@/constants/iconPath';
 import { ImagePath } from '@/constants/imagePath';
@@ -21,10 +20,10 @@ interface PurchaseProps {
   id: string | undefined;
 }
 
-const variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-};
+// const variants = {
+//   hidden: { opacity: 0 },
+//   visible: { opacity: 1 },
+// };
 
 const PurchaseComponent: React.FC<PurchaseProps> = ({ id }) => {
   const courseId = id as string;
@@ -73,22 +72,26 @@ const PurchaseComponent: React.FC<PurchaseProps> = ({ id }) => {
   return (
     <>
       <ErrorToast errorMsg={courseError as unknown as string} />
-      <Loader isLoading={isCourseLoading} color="#0a1535">
-        <MotionDiv
+      {/* <Loader isLoading={isCourseLoading} color="#0a1535"> */}
+      {/* <MotionDiv
           variants={variants}
           initial="hidden"
           animate="visible"
           transition={{
             delay: 2 * 0.25,
             ease: 'easeInOut',
-            duration: 0.5,
+            duration: 0.2,
           }}
           viewport={{ amount: 0 }}
           className="rounded relative w-full"
-        >
-          <div className="self-center justify-self-center container-fluid">
-            <h2 className="sectionHeader">Course info</h2>
-            <div className="flex flex-col md:flex-row contentSectionWrapper px-4 py-7 md:px-5 justify-between gap-4">
+        > */}
+      <div className="self-center justify-self-center container-fluid">
+        <h2 className="sectionHeader">Course info</h2>
+        <div className="flex flex-col md:flex-row contentSectionWrapper px-4 py-7 md:px-5 justify-between gap-4">
+          <div className="flex-1">
+            {isCourseLoading ? (
+              <SkeltonLoader w="width100" h="9" />
+            ) : (
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="rounded-md overflow-hidden w-full md:w-28">
                   <Image
@@ -105,48 +108,72 @@ const PurchaseComponent: React.FC<PurchaseProps> = ({ id }) => {
                   </span>
                 </div>
               </div>
-              <div className="place-content-center font-medium text-xl md:text-lg">
-                E£{course?.price}
+            )}
+          </div>
+          <div className="place-content-center font-medium text-xl md:text-lg">
+            {isCourseLoading ? (
+              <SkeltonLoader w="width100" h="9" />
+            ) : (
+              `E£${course?.price}`
+            )}
+          </div>
+        </div>
+
+        <h2 className="sectionHeader">Payment info</h2>
+        <div className="flex flex-row contentSectionWrapper px-4 py-7 md:px-5 justify-between">
+          {isCourseLoading ? (
+            <div className="flex flex-1 flex-col gap-5">
+              <SkeltonLoader w="width25" h="8" />
+              <SkeltonLoader w="width100" h="8" />
+              <SkeltonLoader w="width15" h="8" />
+              <div className="flex justify-center">
+                <SkeltonLoader w="width15" h="8" />
               </div>
             </div>
+          ) : (
+            <form
+              onSubmit={formik.handleSubmit}
+              className="flex flex-col gap-5 w-full"
+            >
+              <div className="flex flex-col">
+                <label htmlFor="address">Payment Attachment</label>
+                <ImagePicker
+                  label="Upload Image"
+                  onFileSelect={(file) => formik.setFieldValue('image', file)}
+                />
+                {formik.touched.image && formik.errors.image ? (
+                  <div className="text-red-600 font-bold">
+                    {formik.errors.image}
+                  </div>
+                ) : null}
+              </div>
 
-            <h2 className="sectionHeader">Payment info</h2>
-            <div className="flex flex-row contentSectionWrapper px-4 py-7 md:px-5 justify-between">
-              <form
-                onSubmit={formik.handleSubmit}
-                className="flex flex-col gap-5 w-full"
-              >
-                <div className="flex flex-col">
-                  <label htmlFor="address">Payment Attachment</label>
-                  <ImagePicker
-                    label="Upload Image"
-                    onFileSelect={(file) => formik.setFieldValue('image', file)}
-                  />
-                  {formik.touched.image && formik.errors.image ? (
-                    <div className="text-red-600 font-bold">
-                      {formik.errors.image}
-                    </div>
-                  ) : null}
-                </div>
+              <div className="flex flex-row items-end gap-2 italic">
+                <label htmlFor="totalCost">Total Cost:</label>
+                <span className="font-bold text-green-600">{`E£ ${formik.values.totalCost}`}</span>
+                {formik.touched.totalCost && formik.errors.totalCost ? (
+                  <div className="text-red-600 font-bold">
+                    {formik.errors.totalCost}
+                  </div>
+                ) : null}
+              </div>
 
-                <div className="flex flex-row items-end gap-2 italic">
-                  <label htmlFor="totalCost">Total Cost:</label>
-                  <span className="font-bold text-green-600">{`E£ ${formik.values.totalCost}`}</span>
-                  {formik.touched.totalCost && formik.errors.totalCost ? (
-                    <div className="text-red-600 font-bold">
-                      {formik.errors.totalCost}
-                    </div>
-                  ) : null}
-                </div>
+              <Button classN="registerBTN self-center" type="submit">
+                Buy course
+              </Button>
+            </form>
+          )}
+        </div>
 
-                <Button classN="registerBTN self-center" type="submit">
-                  Buy course
-                </Button>
-              </form>
+        <h2 className="sectionHeader">Payment methods</h2>
+        <div className="flex flex-col contentSectionWrapper px-4 py-7 md:px-5 justify-between gap-5">
+          {isCourseLoading ? (
+            <div className="flex gap-5 flex-col">
+              <SkeltonLoader w="width25" h="8" />
+              <SkeltonLoader w="width33" h="8" />
             </div>
-
-            <h2 className="sectionHeader">Payment methods</h2>
-            <div className="flex flex-col contentSectionWrapper px-4 py-7 md:px-5 justify-between gap-5">
+          ) : (
+            <div className="flex flex-col justify-between gap-5">
               <div className="flex gap-3 items-center">
                 <Image
                   src={IconPath.VODAFONE}
@@ -166,9 +193,11 @@ const PurchaseComponent: React.FC<PurchaseProps> = ({ id }) => {
                 <span>example@example.com</span>
               </div>
             </div>
-          </div>
-        </MotionDiv>
-      </Loader>
+          )}
+        </div>
+      </div>
+      {/* </MotionDiv> */}
+      {/* </Loader> */}
     </>
   );
 };

@@ -3,10 +3,10 @@ import { BaseResponse, ErrorMessage } from '@/models/api';
 import { Course, RateCoursePayload } from '@/models/course';
 import { Enrollment } from '@/models/enrollment';
 
-export const getCourses = async (search?: string) => {
+export const getCourses = async (search?: string, page?: string) => {
   try {
     const { data } = await api.get<BaseResponse<Course[]>>('/api/courses', {
-      params: { search },
+      params: { search, page },
     });
     return data;
   } catch (error) {

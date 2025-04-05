@@ -1,5 +1,7 @@
+import DashboardPage from '@/features/dashboard/DashboardPage';
+
 const Dashboard = async () => {
-  return <>Dashboard</>;
+  return <DashboardPage />;
 };
 
 export default Dashboard;

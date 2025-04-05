@@ -40,7 +40,7 @@ const CourseHero: React.FC<HeroProps> = ({
       transition={{
         delay: 2 * 0.25,
         ease: 'easeInOut',
-        duration: 0.5,
+        duration: 0.2,
       }}
       viewport={{ amount: 0 }}
       className="rounded relative w-full"

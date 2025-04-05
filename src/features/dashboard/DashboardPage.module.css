@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  background: var(--dbbg);
+  color: var(--text);
+  height: 100dvh;
+}
+
+.menu {
+  flex: 1;
+  background: var(--dbbgSoft);
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 4;
+  padding: 20px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.wrapper {
+  display: flex;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.main {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.side {
+  flex: 1;
+}

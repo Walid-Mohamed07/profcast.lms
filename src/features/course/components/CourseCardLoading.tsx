@@ -10,7 +10,7 @@ const CourseCardLoading: FC<CourseCardLoadingProps> = ({ count }) => {
       {Array.from({ length: count }).map((_, i) => (
         <div
           key={i}
-          className="w-52 p-1 animate-pulse rounded shadow-xl border-[1px]"
+          className="w-full md:w-52 p-1 animate-pulse rounded shadow-xl border-[1px]"
         >
           <div className="bg-gray-800/20 rounded w-full h-28">
             <div className="rounded-[4px]"></div>
