@@ -37,17 +37,17 @@ const Home = () => {
       <CourseSection
         title="Popular Courses"
         description="Explore our most popular learning paths"
-        // courses={courses?.data || []}
+      // courses={courses?.data || []}
       />
       <CourseSection
         title="New Courses"
         description="Check out our latest course offerings"
-        // courses={courses?.data || []}
+      // courses={courses?.data || []}
       />
       <CourseSection
         title="Featured Courses"
         description="Hand-picked courses by our experts"
-        // courses={courses?.data || []}
+      // courses={courses?.data || []}
       />
     </div>
   );
