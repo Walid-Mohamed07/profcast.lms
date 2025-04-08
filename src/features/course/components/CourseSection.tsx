@@ -65,10 +65,11 @@ const CourseSection: FC<CourseSectionProps> = ({
   };
 
   useEffect(() => {
+    const container = scrollContainerRef.current;
+    
     const handleScroll = () => {
-      if (!scrollContainerRef.current) return;
+      if (!container) return;
 
-      const container = scrollContainerRef.current;
       setCanScrollLeft(container.scrollLeft > 0);
       setCanScrollRight(
         container.scrollLeft + container.offsetWidth < container.scrollWidth,

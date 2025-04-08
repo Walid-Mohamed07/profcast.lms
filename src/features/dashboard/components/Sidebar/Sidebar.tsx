@@ -12,7 +12,7 @@ import {
 } from 'react-icons/md';
 import MenuLink from './MenuLink/MenuLink';
 import styles from './Sidebar.module.css';
- 
+
 const menuItems = [
   {
     title: 'Pages',
