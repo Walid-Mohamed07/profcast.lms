@@ -1,3 +1,4 @@
+// eslint-disable-next-line boundaries/element-types
 'use client';
 
 import ErrorToast from '@/components/Toast/ErrorToast';
