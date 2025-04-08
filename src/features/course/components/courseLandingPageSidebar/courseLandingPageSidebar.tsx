@@ -7,7 +7,7 @@ import { Path } from '@/constants/routePath';
 import { Link } from '@/i18n/routing';
 import { getCurrentUser } from '@/lib/auth';
 import { Media } from '@/models/media';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import './courseLandingPageSidebar.css';
 
@@ -31,7 +31,7 @@ const CourseLandingPageSidebar: React.FC<HeroProps> = ({
 }) => {
   const t = useTranslations();
 
-  const locale = useLocale();
+  // const locale = useLocale();
   const imageUrl = media[0]?.original_url || ImagePath.COURSE_PLACEHOLDER;
 
   const currentUser = getCurrentUser();
