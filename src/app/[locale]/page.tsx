@@ -1,4 +1,3 @@
-import { Metadata } from 'next';
 import { QueryKey } from '@/constants/queryKey';
 import Home from '@/features/course/components/Home';
 import { getCourses } from '@/features/course/services/courses';
@@ -8,7 +7,7 @@ import {
   HydrationBoundary,
   QueryClient,
 } from '@tanstack/react-query';
-
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Prof Cast LMS',
