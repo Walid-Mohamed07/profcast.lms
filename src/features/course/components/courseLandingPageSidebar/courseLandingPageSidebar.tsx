@@ -75,7 +75,7 @@ const CourseLandingPageSidebar: React.FC<HeroProps> = ({
                     href={Path.PURCHASE + `/${id}`}
                     onClick={() => {
                       if (!currentUser)
-                        return (window.location.href = `http://localhost:5000/${locale}/login?courseId=${id}`);
+                        return (window.location.href = `https://profcast.net/login?courseId=${id}`);
                     }}
                   >
                     <Button>{t('courses.buy_now')}</Button>
