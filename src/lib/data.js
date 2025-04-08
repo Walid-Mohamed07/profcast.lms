@@ -38,10 +38,10 @@ export const fetchCourses = async (q, page) => {
     connectToDB();
     const count = await CourseSch.countDocuments({ title: { $regex: regex } });
     const courses = await CourseSch.find({ title: { $regex: regex } })
-    .populate('instructor')
-    .limit(ITEM_PER_PAGE)
-    .skip(ITEM_PER_PAGE * (page - 1))
-    .lean();
+      .populate('instructor')
+      .limit(ITEM_PER_PAGE)
+      .skip(ITEM_PER_PAGE * (page - 1))
+      .lean();
     return { count, courses };
   } catch (error) {
     throw new Error('Error fetching courses: ' + error.message);

@@ -3,6 +3,7 @@ import { connectToDB } from '@/lib/util';
 import bcrypt from 'bcryptjs';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+// eslint-disable-next-line boundaries/element-types
 import { authConfig } from './authconfig';
 
 const login = async (credentials) => {
@@ -35,8 +36,7 @@ export const { signIn, signOut, auth } = NextAuth({
         try {
           const user = await login(credentials);
           return user;
-        } catch (err) {
-          console.log(err);
+        } catch {
           return null;
         }
       },

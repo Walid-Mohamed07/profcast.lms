@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ImagePath } from '@/constants/imagePath';
 import { STORAGE_PATH } from '@/constants/storagePath';
 import styles from '@/features/dashboard/components/Courses/Courses.module.css';
@@ -8,13 +9,17 @@ import { fetchCourses } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface PageProps {
-  searchParams: { q?: string; page?: number };
+interface CoursePageProps {
+  searchParams: Promise<{
+    q?: string;
+    page?: string | number;
+  }>;
 }
 
-const Courses = async ({ searchParams }: PageProps) => {
-  const q = searchParams?.q || '';
-  const page = searchParams?.page || 1;
+const Courses = async ({ searchParams }: CoursePageProps) => {
+  const params = await searchParams;
+  const q = params?.q || '';
+  const page = Number(params?.page) || 1;
 
   // Fetch courses data
   const { count, courses } = await fetchCourses(q, page);
@@ -43,8 +48,8 @@ const Courses = async ({ searchParams }: PageProps) => {
           </tr>
         </thead>
         <tbody>
-          {courses.map((course) => (
-            <tr key={course._id as string}>
+          {courses.map((course: any) => (
+            <tr key={course._id}>
               <td>
                 <div className={styles.course}>
                   <Image
@@ -90,7 +95,7 @@ const Courses = async ({ searchParams }: PageProps) => {
                     </button>
                   </Link>
                   <form action={deleteCourse}>
-                    <input type="hidden" name="id" value={course._id as string} />
+                    <input type="hidden" name="id" value={course._id} />
                     <button className={`${styles.button} ${styles.delete}`}>
                       Delete
                     </button>

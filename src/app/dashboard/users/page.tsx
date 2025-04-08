@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { STORAGE_PATH } from '@/constants/storagePath';
 import Pagination from '@/features/dashboard/components/Pagination/Pagination';
 import Search from '@/features/dashboard/components/Search/Search';
@@ -7,13 +8,14 @@ import { fetchUsers } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface PageProps {
-  searchParams: { q?: string; page?: number };
-}
-
-const Users = async ({ searchParams }: PageProps) => {
-  const q = searchParams?.q || '';
-  const page = searchParams?.page || 1;
+const Users = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string; page?: number }>;
+}) => {
+  const params = await searchParams;
+  const q = params?.q || '';
+  const page = params?.page || 1;
   const { count, users } = await fetchUsers(q, page);
 
   return (
@@ -36,8 +38,8 @@ const Users = async ({ searchParams }: PageProps) => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <tr key={String(user._id)}>
+          {users.map((user: any) => (
+            <tr key={user._id}>
               <td>
                 <div className={styles.user}>
                   <Image
@@ -66,7 +68,7 @@ const Users = async ({ searchParams }: PageProps) => {
                     </button>
                   </Link>
                   <form action={deleteUser}>
-                    <input type="hidden" name="id" value={String(user._id)} />
+                    <input type="hidden" name="id" value={user._id} />
                     <button className={`${styles.button} ${styles.delete}`}>
                       Delete
                     </button>

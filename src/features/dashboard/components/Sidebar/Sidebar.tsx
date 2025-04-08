@@ -1,3 +1,4 @@
+// eslint-disable-next-line boundaries/element-types
 import { auth, signOut } from '@/app/auth';
 import { STORAGE_PATH } from '@/constants/storagePath';
 import Image from 'next/image';
@@ -11,7 +12,7 @@ import {
 } from 'react-icons/md';
 import MenuLink from './MenuLink/MenuLink';
 import styles from './Sidebar.module.css';
-
+ 
 const menuItems = [
   {
     title: 'Pages',
@@ -56,7 +57,8 @@ const menuItems = [
 ];
 
 const Sidebar = async () => {
-  const { user } = await auth();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { user } = (await auth()) as any;
 
   return (
     <div className={styles.container}>

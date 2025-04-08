@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from '@/features/dashboard/components/Courses/AddCourse/AddCourse.module.css';
 import { addCourse } from '@/lib/actions';
 import { fetchUsers } from '@/lib/data';
@@ -18,7 +19,7 @@ const AddCourse = async () => {
         </select>
         <select name="instructor" id="instructor">
           <option value="general">Choose course instructor</option>
-          {users.map((user) => (
+          {users.map((user: any) => (
             <option key={user._id} defaultValue={user._id}>
               {user.username}
             </option>

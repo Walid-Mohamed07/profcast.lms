@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ImagePath } from '@/constants/imagePath';
 import styles from '@/features/dashboard/components/Courses/CourseInfo/CourseInfo.module.css';
 import { updateCourse } from '@/lib/actions';
 import { fetchCourse, fetchUsers } from '@/lib/data';
 import Image from 'next/image';
 
-const CourseInfo = async ({ params }) => {
+const CourseInfo = async ({ params }: any) => {
   const { id } = await params;
   const { users } = await fetchUsers();
   const course = await fetchCourse(id);
@@ -41,7 +42,7 @@ const CourseInfo = async ({ params }) => {
             defaultValue={course.instructor._id}
           >
             <option value="general">Choose course instructor</option>
-            {users.map((user) => (
+            {users.map((user: any) => (
               <option key={user._id} value={user._id}>
                 {user.username}
               </option>

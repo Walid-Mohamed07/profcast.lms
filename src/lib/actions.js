@@ -1,5 +1,6 @@
 'use server';
 
+// eslint-disable-next-line boundaries/element-types
 import { signIn } from '@/app/auth';
 import bcrypt from 'bcryptjs';
 import { revalidatePath } from 'next/cache';

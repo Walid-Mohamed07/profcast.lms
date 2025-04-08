@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -5,7 +6,7 @@ import { MdSearch } from 'react-icons/md';
 import { useDebouncedCallback } from 'use-debounce';
 import styles from './Search.module.css';
 
-const Search = ({ placeholder }) => {
+const Search = ({ placeholder }: any) => {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();

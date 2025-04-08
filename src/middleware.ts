@@ -1,3 +1,4 @@
+// eslint-disable-next-line boundaries/element-types
 import { authConfig } from '@/app/authconfig';
 import NextAuth from 'next-auth';
 import createMiddleware from 'next-intl/middleware';

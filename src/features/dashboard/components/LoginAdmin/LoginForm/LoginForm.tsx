@@ -2,8 +2,8 @@
 
 import { authenticate } from '@/lib/actions';
 import Image from 'next/image';
-import styles from './LoginForm.module.css';
 import { useActionState } from 'react';
+import styles from './LoginForm.module.css';
 
 const LoginForm = () => {
   const [state, formAction] = useActionState(authenticate, undefined);

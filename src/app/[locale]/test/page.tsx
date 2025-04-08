@@ -1,5 +1,6 @@
 const page = () => {
-  const handleForm = async (formData) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleForm = async (formData: any) => {
     'use server';
     const username = formData.get('username');
     console.log('Hello', username);

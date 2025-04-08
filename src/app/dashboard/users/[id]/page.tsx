@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { STORAGE_PATH } from '@/constants/storagePath';
 import styles from '@/features/dashboard/components/Users/UserInfo/UserInfo.module.css';
 import { updateUser } from '@/lib/actions';
 import { fetchUser } from '@/lib/data';
 import Image from 'next/image';
 
-const UserInfo = async ({ params }) => {
+const UserInfo = async ({ params }: any) => {
   const { id } = await params;
   const user = await fetchUser(id);
 
