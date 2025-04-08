@@ -1,36 +1,7 @@
 /* eslint-disable prettier/prettier */
 'use client';
 
-import { Metadata } from 'next';
 import CourseSection from '@/features/course/components/CourseSection';
-
-export const metadata: Metadata = {
-  title: 'Prof Cast LMS',
-  description:
-    'Prof Cast, where you can find the latest news, most viewed blogs, and our top services.',
-  icons: {
-    icon: '/assets/images/logow.webp',
-  },
-  openGraph: {
-    type: 'website',
-    url: 'https://profcastlms.vercel.app/',
-    images: [
-      {
-        url: '/assets/images/logow.webp',
-        alt: 'Prof Cast OpenGraph Image',
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-  keywords: [
-    'Prof Cast',
-    'ProfCast',
-    'ProfCast.com',
-    'ProfCast.com.ng',
-    'ProfCast Nigeria',
-  ],
-};
 
 const Home = () => {
   return (
