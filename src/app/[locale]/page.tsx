@@ -37,7 +37,6 @@ export const metadata: Metadata = {
   ],
 };
 
-
 const Page = async () => {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
