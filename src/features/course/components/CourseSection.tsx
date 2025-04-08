@@ -66,7 +66,7 @@ const CourseSection: FC<CourseSectionProps> = ({
 
   useEffect(() => {
     const container = scrollContainerRef.current;
-    
+
     const handleScroll = () => {
       if (!container) return;
 
@@ -98,9 +98,8 @@ const CourseSection: FC<CourseSectionProps> = ({
           <div className="relative">
             <button
               onClick={() => scroll('left')}
-              className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full shadow-md bg-white/80 ${
-                canScrollLeft ? 'hover:bg-white' : 'opacity-25'
-              } duration-300`}
+              className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full shadow-md bg-white/80 ${canScrollLeft ? 'hover:bg-white' : 'opacity-25'
+                } duration-300`}
               disabled={!canScrollLeft}
             >
               <Image
@@ -130,9 +129,8 @@ const CourseSection: FC<CourseSectionProps> = ({
             </div>
             <button
               onClick={() => scroll('right')}
-              className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full shadow-md bg-white/80 ${
-                canScrollRight ? 'hover:bg-white' : 'opacity-25'
-              } duration-300`}
+              className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full shadow-md bg-white/80 ${canScrollRight ? 'hover:bg-white' : 'opacity-25'
+                } duration-300`}
               disabled={!canScrollRight}
             >
               <Image
