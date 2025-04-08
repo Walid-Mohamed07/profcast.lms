@@ -150,7 +150,7 @@ const NavBar = () => {
                 </div>
               </div>
             ) : (
-              <Link href={`http://localhost:5000/${locale}/login`}>
+              <Link href={`https://profcast.net/login`}>
                 {t('authentication.login')}
               </Link>
             )}
