@@ -1,4 +1,3 @@
-// eslint-disable-next-line boundaries/element-types
 'use client';
 
 import ErrorToast from '@/components/Toast/ErrorToast';
@@ -25,13 +24,11 @@ export const metadata: Metadata = {
 interface CourseSectionProps {
   title: string;
   description?: string;
-  // courses: Course[];
 }
 
 const CourseSection: FC<CourseSectionProps> = ({
   title,
   description,
-  // courses,
 }) => {
   const {
     data: courses,
@@ -78,10 +75,10 @@ const CourseSection: FC<CourseSectionProps> = ({
     };
 
     handleScroll();
-    scrollContainerRef.current?.addEventListener('scroll', handleScroll);
+    container?.addEventListener('scroll', handleScroll);
 
     return () => {
-      scrollContainerRef.current?.removeEventListener('scroll', handleScroll);
+      container?.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
