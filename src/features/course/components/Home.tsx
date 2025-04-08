@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    url: 'https://profcast.net/',
+    url: 'https://profcastlms.vercel.app/',
     images: [
       {
         url: '/assets/images/logow.webp',
